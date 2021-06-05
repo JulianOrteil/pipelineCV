@@ -1,3 +1,44 @@
 {
-    "python.pythonPath": "C:\\ProgramData\\Anaconda3\\envs\\pipelinecv\\python.exe"
+    "python.pythonPath": "C:\\ProgramData\\Anaconda3\\envs\\pipelinecv\\python.exe",
+    "python.linting.enabled": true,
+    "python.linting.banditEnabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [
+        "--max-line-length=100",
+        "--ignore=E402,F841,F401,E302,E305,W503",
+    ],
+    "python.linting.pylintEnabled": true,
+    "python.languageServer": "Pylance",
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "name": "Comment",
+                "scope": [
+                    "comment",
+                    "comment.block",
+                    "comment.block.documentation",
+                    "comment.line",
+                    "comment.line.double-slash",
+                    "punctuation.definition.comment",
+                ],
+                "settings": {
+                    "fontStyle": "italic",
+                }
+            },
+            {
+                "name": "Docstring",
+                "scope": [
+                    "string.quoted.docstring.multi.python"
+                ],
+                "settings": {
+                    "fontStyle": "italic",
+                }
+            }
+        ]
+    },
+    "python.testing.unittestEnabled": true,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": false,
+    "python.testing.pytestArgs": [],
+    "python.testing.unittestArgs": []
 }
