@@ -8,12 +8,13 @@ import sys
 from multiprocessing import freeze_support
 
 from loguru import logger
-from PySide6.QtCore import Signal
+from PySide6.QtCore import Signal, Slot
 from PySide6.QtWidgets import QApplication
 
 sys.path.append(os.path.abspath("./src"))
 
 from pipelinecv.utils import configure_logging  # pylint: disable=wrong-import-position
+from pipelinecv.ui import MainWindow
 
 
 __all__ = ['main']
@@ -34,6 +35,28 @@ class Application(QApplication):
 
     _start = Signal()
 
+    _mainwindow: MainWindow
+
+    def __init__(self, *args, **kwargs):
+        logger.trace(f"Initializing {__name__}.{__class__.__name__}")
+        super().__init__(*args, **kwargs)
+
+        # Bind application-level signals to their slots
+        self._bind_signals()
+
+    def _bind_signals(self) -> None:
+        logger.debug("Binding application slots")
+
+        self.aboutToQuit.connect(self.quit)
+        self._start.connect(self._build_mainwindow)
+
+    @Slot()
+    def _build_mainwindow(self) -> None:
+        logger.debug("Building the main window")
+
+        self._mainwindow = MainWindow()
+        self._mainwindow.showMaximized()
+
     def exec(self) -> int:
         """Run the application. Same as `exec_()`.
 
@@ -49,7 +72,7 @@ class Application(QApplication):
 
         # Run the main event loop and return the errcode on application
         # exit
-        logger.debug("Entering application event loop")
+        logger.info("Starting application event loop")
         return super().exec()
 
     def exec_(self) -> int:
@@ -61,6 +84,14 @@ class Application(QApplication):
         """
 
         return self.exec()
+
+    @Slot()
+    def quit(self) -> None:
+        """Runs shutdown processes for the application."""
+
+        logger.info("Shutting down application")
+
+        logger.success("Application shut down")
 
 
 @logger.catch
