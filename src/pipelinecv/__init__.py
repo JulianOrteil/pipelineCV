@@ -8,8 +8,8 @@ import sys
 from multiprocessing import freeze_support
 
 from loguru import logger
-from PySide6.QtCore import Signal  # pylint: disable=no-name-in-module
-from PySide6.QtWidgets import QApplication  # pylint: disable=no-name-in-module
+from PySide6.QtCore import Signal
+from PySide6.QtWidgets import QApplication
 
 sys.path.append(os.path.abspath("./src"))
 
