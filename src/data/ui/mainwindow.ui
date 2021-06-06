@@ -31,12 +31,15 @@
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
+   <layout class="QGridLayout" name="centralLayout">
     <property name="bottomMargin">
      <number>0</number>
     </property>
     <item row="0" column="0">
      <widget class="QSplitter" name="centralSplitter">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
       <property name="childrenCollapsible">
        <bool>false</bool>
       </property>
@@ -99,7 +102,7 @@ QTabBar::tab:!selected {
          <height>0</height>
         </size>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout">
+       <layout class="QVBoxLayout" name="previewsLayout">
         <property name="leftMargin">
          <number>0</number>
         </property>
@@ -133,12 +136,7 @@ QTabBar::tab:!selected {
              <height>150</height>
             </size>
            </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
+           <layout class="QHBoxLayout" name="resultLayout"/>
           </widget>
           <widget class="QFrame" name="pipelinePreview">
            <property name="sizePolicy">
@@ -155,12 +153,6 @@ QTabBar::tab:!selected {
            </property>
            <property name="acceptDrops">
             <bool>true</bool>
-           </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
            </property>
           </widget>
          </widget>
