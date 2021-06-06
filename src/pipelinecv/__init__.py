@@ -6,15 +6,14 @@
 import os
 import sys
 from multiprocessing import freeze_support
-from typing import NoReturn
 
 from loguru import logger
-from PySide6.QtCore import Signal
-from PySide6.QtWidgets import QApplication
+from PySide6.QtCore import Signal  # pylint: disable=no-name-in-module
+from PySide6.QtWidgets import QApplication  # pylint: disable=no-name-in-module
 
 sys.path.append(os.path.abspath("./src"))
 
-from pipelinecv.utils import configure_logging
+from pipelinecv.utils import configure_logging  # pylint: disable=wrong-import-position
 
 
 __all__ = ['main']
